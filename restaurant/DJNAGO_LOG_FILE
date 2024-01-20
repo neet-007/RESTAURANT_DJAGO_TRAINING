@@ -1,0 +1,5 @@
+2024-01-21 01:37:13,069:INFO - django.utils.autoreloadautoreload.py (668). Watching for file changes with StatReloader
+2024-01-21 01:37:40,091:INFO - user_auth.viewsviews.py (64). user with pk 2 was added as a manager
+2024-01-21 01:38:30,752:INFO - user_auth.viewsviews.py (78). user with pk 2 was removed from managers
+2024-01-21 01:38:52,515:INFO - django.utils.autoreloadautoreload.py (668). Watching for file changes with StatReloader
+2024-01-21 01:39:06,632:INFO - django.utils.autoreloadautoreload.py (266). C:\Users\Lmc\Desktop\advanced django codio\training\restaurant\restaurant\settings.py changed, reloading.
