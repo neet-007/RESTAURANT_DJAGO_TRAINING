@@ -4,6 +4,7 @@ from . import views
 
 router = DefaultRouter()
 router.register('managers', views.managers_view)
+router.register('user-profile', views.UserProfileView)
 urlpatterns = [
     path('register', views.register_view.as_view(), name='register'),
     path('login', views.login_view.as_view(), name='login'),

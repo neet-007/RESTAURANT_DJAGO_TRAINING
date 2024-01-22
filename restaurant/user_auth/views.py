@@ -61,6 +61,8 @@ class managers_view(ModelViewSet):
         if email and user_model.objects.filter(email=email).exists():
             user = user_model.objects.get(email=email)
             Group.objects.get(name__iexact='manager').user_set.add(user)
+            user.userprofile.role = 1
+            user.save()
             logger.info('user with pk %d was added as a manager by user with pk %d',user.pk, self.request.user.pk)
             return Response({'success':f'user {user.email} is now a manager'}, status=status.HTTP_200_OK)
 
@@ -79,6 +81,18 @@ class managers_view(ModelViewSet):
             return Response({'success':f'user {user.email} removed from managers'}, status=status.HTTP_200_OK)
 
         return Response({'error':'user is not a manager'})
+
+
+class UserProfileView(ModelViewSet):
+    queryset = UserProfile.objects.all()
+    serializer_class = UserProfileSerializer
+
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context['user'] = self.request.user
+        context['method'] = self.request.method
+        return context
 
 
 @method_decorator(ensure_csrf_cookie, name='dispatch')

@@ -37,7 +37,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = MyUserManager()
 
 class UserProfile(models.Model):
-    class integerChoises(models.IntegerChoices):
+    class IntegerChoices(models.IntegerChoices):
         MANAGER = 1, 'Mangaer'
         DELIVERY_CREW = 2, 'Delivery Crew'
         USER = 3, 'User'
@@ -45,6 +45,6 @@ class UserProfile(models.Model):
     username = models.CharField(max_length=125)
     first_name = models.CharField(max_length=125, blank=True, null=True)
     last_name = models.CharField(max_length=125, blank=True, null=True)
-    role = models.IntegerField(choices=integerChoises.choices)
+    role = models.IntegerField(choices=IntegerChoices.choices, default=IntegerChoices.USER)
     phone_number = models.CharField(max_length=20, blank=True, null=True)
     address = models.CharField(max_length=255, blank=True, null=True)
